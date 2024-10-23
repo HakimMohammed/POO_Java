@@ -1,59 +1,17 @@
-# French Verb Conjugator
+# Exercise 2: Verb Conjugation
 
-## Description
+## Objective
+This program reads a first-group verb (ending in "er") from the user and conjugates it in the present tense.
 
-The French Verb Conjugator is a Java project designed to help users conjugate French verbs ending in "er". The project allows users to input a verb, and it outputs the conjugation for different pronouns.
+## Files
+- `Main.java`: Handles user input and executes the program.
+- `VerbManager.java`: Implements the conjugation logic.
 
-## Installation
-
-To run this project, make sure you have the following:
-
-- Java Development Kit (JDK) installed on your machine.
-- An Integrated Development Environment (IDE) such as IntelliJ IDEA, Eclipse, or similar.
-
-### Steps:
-
-1. Clone the repository or download the source code.
-2. Open the project in your preferred IDE.
-3. Ensure that the JDK is correctly configured in your IDE.
-4. Compile and run the `Main.java` file.
+## Functionalities
+- **Verb Input**: The program reads a verb from the user using `Scanner`.
+- **Conjugation Logic**: The `conjuger()` function in `VerbManager.java` verifies that the verb ends in "er" using `endsWith()`. It then conjugates the verb by removing the last two characters and adding the correct endings for each pronoun.
 
 ## Usage
-
-Below is an example of how to use the functionalities provided by the French Verb Conjugator:
-
-```java
-import java.util.Scanner;
-
-public class Main {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter a verb: ");
-        String verb = sc.nextLine();
-        VerbManager.conjuger(verb);
-    }
-}
-```
-
-### VerbManager Methods:
-
-- `conjuger(String verb)`: Conjugates the given verb if it ends with "er". It outputs the conjugation for the pronouns: Je, Tu, Il, Nous, Vous, Ils.
-
-#### Example:
-
-When the user inputs the verb "parler":
-
-```plaintext
-Je parle
-Tu parles
-Il parle
-Nous parlons
-Vous parlez
-Ils parlent
-```
-
-## Contributors
-
-- [Your Name]
-
-Feel free to contribute to this project by submitting a pull request or opening an issue on the repository.
+1. Run `Main.java`.
+2. Input a regular first-group verb (ending in "er").
+3. The program will output the conjugated verb for each pronoun.

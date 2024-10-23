@@ -1,5 +1,5 @@
 # POO_Java
-# Welcome to the POO_Java repository! This is where I will be working on and documenting my responses to various POO_JAVA (Object-Oriented Programming in Java) assignments.
+Welcome to the POO_Java repository! This is where I will be working on and documenting my responses to various POO_JAVA (Object-Oriented Programming in Java) assignments.
 
 
 # TP-1

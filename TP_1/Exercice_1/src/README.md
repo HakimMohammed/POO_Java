@@ -1,53 +1,23 @@
-# Student Grade Manager
+# Exercise 1: Student Grades Management
 
-## Description
+## Objective
+This program manages a list of student grades, performing several operations on them:
+1. Sort and display the grades.
+2. Calculate and display the average grade.
+3. Find and display the highest and lowest grades.
+4. Count how many students received a specific grade entered by the user.
 
-The Student Grade Manager is a Java project designed to aid in managing and analyzing student grades. The project provides functionalities to sort grades, calculate the average grade, find the highest and lowest grades, and count the occurrences of a specific grade.
+## Files
+- `Main.java`: Manages user interaction and program execution.
+- `NoteManager.java`: Implements the core logic for handling the grade operations.
+
+## Functionalities
+- **Sorting and Displaying Grades**: The `sortGrades()` function sorts the grades using Java's `Arrays.sort()` method.
+- **Average Grade Calculation**: The `getAverageGrade()` function sums the grades and divides by the number of students using Java streams.
+- **Finding Max and Min Grades**: The `getHighLowGrade()` function uses Java’s `stream()` methods to find the maximum and minimum grades.
+- **Counting Occurrences of a Specific Grade**: The `getGradeOccurrence()` function loops through the list to count how many times a specific grade appears.
 
 ## Usage
-
-Below is an example of how to use the functionalities provided by the Student Grade Manager:
-
-```java
-import java.util.Arrays;
-import java.util.Scanner;
-
-public class Main {
-
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter the number of students:");
-        int nbEtudiants = sc.nextInt();
-        int[] notes = new int[nbEtudiants];
-
-        for (int i = 0; i < nbEtudiants; i++) {
-            System.out.println("Enter the grade for student number: "+(i+1));
-            notes[i] = sc.nextInt();
-        }
-
-        // Sort grades
-        NoteManager.sortGrades(notes);
-        System.out.println("Sorted grades: " + Arrays.toString(notes));
-
-        // Calculate average grade
-        int average = NoteManager.getAverageGrade(notes);
-        System.out.println("Average grade: "+average);
-
-        // Get highest and lowest grades
-        System.out.println(NoteManager.getHighLowGrade(notes));
-
-        // Count occurrences of a specific grade
-        System.out.println("Enter the grade you want to search for: ");
-        int note = sc.nextInt();
-        int nbOccurrences = NoteManager.getGradeOccurence(notes, note);
-        System.out.println(nbOccurrences + " students have the grade " + note);
-    }
-}
-```
-
-### Key Methods in NoteManager:
-
-- `sortGrades(int[] grades)`: Sorts the given array of grades in ascending order.
-- `getAverageGrade(int[] grades)`: Calculates and returns the average grade.
-- `getHighLowGrade(int[] grades)`: Returns a string with the lowest and highest grades.
-- `getGradeOccurence(int[] grades, int grade)`: Returns the number of occurrences of the specified grade.
+1. Run `Main.java`.
+2. Input the number of students and their grades.
+3. Choose an operation: sort, find average, max/min, or count occurrences of a grade.
