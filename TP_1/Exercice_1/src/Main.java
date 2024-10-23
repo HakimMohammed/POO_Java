@@ -14,9 +14,6 @@ public class Main {
             notes[i] = sc.nextInt();
         }
 
-        // Initial Grades
-        //System.out.println(Arrays.toString(notes));
-
         // Sort
         NoteManager.sortGrades(notes);
         System.out.println(Arrays.toString(notes));
@@ -24,7 +21,6 @@ public class Main {
         // Average
         int average = NoteManager.getAverageGrade(notes);
         System.out.println("La note moyenne : "+average);
-
 
         // Low _ High
         System.out.println(NoteManager.getHighLowGrade(notes));

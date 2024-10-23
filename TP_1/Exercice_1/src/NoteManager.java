@@ -16,7 +16,6 @@ public class NoteManager {
     public static String getHighLowGrade(int[] grades) {
         int low = Arrays.stream(grades).min().getAsInt();
         int high = Arrays.stream(grades).max().getAsInt();
-
         return "lowest Grade: " + low + " highest Grade: " + high;
     }
 
@@ -24,9 +23,7 @@ public class NoteManager {
     public static int getGradeOccurence(int[] grades, int grade) {
         int nbOccurrences = 0;
         for( int g:grades) {
-            if(g == grade) {
-                nbOccurrences++;
-            }
+            if(g == grade) {nbOccurrences++;}
         }
         return nbOccurrences;
     }
