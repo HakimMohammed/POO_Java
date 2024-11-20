@@ -1,0 +1,11 @@
+package Ex4;
+
+import java.util.List;
+
+public interface IMetierProduit {
+    public Produit addProduit(Produit p);
+    public List<Produit> getAll();
+    public List<Produit> findByNom(String motCle);
+    public Produit findById(long id);
+    public void delete(long id);
+}
