@@ -1,4 +1,4 @@
-package metier;
+package models;
 
 public class Departement {
     private int id;

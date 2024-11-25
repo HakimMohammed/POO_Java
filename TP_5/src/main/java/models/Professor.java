@@ -1,4 +1,4 @@
-package metier;
+package models;
 
 import java.sql.Date;
 
