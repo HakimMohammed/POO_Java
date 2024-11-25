@@ -6,5 +6,6 @@ module com.example.tp_5 {
 
 
     opens com.example.tp_5 to javafx.fxml;
-    exports com.example.tp_5;
+    //exports com.example.tp_5;
+    exports views to javafx.graphics;
 }

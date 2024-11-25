@@ -1,3 +1,5 @@
+package console;
+
 import metier.DepartmentMetierImpl;
 import metier.ProfessorMetierImpl;
 import models.Departement;
