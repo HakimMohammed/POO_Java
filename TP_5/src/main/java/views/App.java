@@ -1,9 +1,9 @@
 package views;
 
+import controllers.ProfessorController;
 import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import metier.ProfessorMetierImpl;
 import views.Pages.DepartmentPage;
 import views.Pages.ProfessorPage;
 import views.Pages.WelcomePage;
@@ -19,7 +19,10 @@ public class App extends Application {
 
         // Pages
         WelcomePage welcomePage = new WelcomePage(primaryStage);
-        ProfessorPage professorPage = new ProfessorPage(primaryStage, welcomePage);
+
+        ProfessorMetierImpl professorMetier = new ProfessorMetierImpl();
+        ProfessorController professorController = new ProfessorController(professorMetier);
+        ProfessorPage professorPage = new ProfessorPage(primaryStage, welcomePage, professorController);
         DepartmentPage departmentPage = new DepartmentPage(primaryStage, welcomePage);
 
         // Navigation

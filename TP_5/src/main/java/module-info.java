@@ -10,4 +10,6 @@ module com.example.tp_5 {
     exports views to javafx.graphics;
     exports views.Pages to javafx.graphics;
     exports views.components to javafx.graphics;
+    exports controllers;
+    exports models;
 }

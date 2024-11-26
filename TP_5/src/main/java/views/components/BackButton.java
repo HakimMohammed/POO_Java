@@ -1,6 +1,5 @@
 package views.components;
 
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -15,6 +14,7 @@ public class BackButton {
         ImageView imageView = new ImageView(image);
 
         Button button = new Button("", imageView);
+        button.setStyle("-fx-background-color: transparent; -fx-border-color: transparent; -fx-padding: 15 15 0 0");
         imageView.setFitWidth(20);
         imageView.setFitHeight(20);
 
