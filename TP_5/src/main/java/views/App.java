@@ -18,7 +18,7 @@ public class App extends Application {
     public void start(Stage primaryStage) {
 
         // Pages
-        WelcomePage welcomePage = new WelcomePage(primaryStage);
+        WelcomePage welcomePage = new WelcomePage();
 
         ProfessorMetierImpl professorMetier = new ProfessorMetierImpl();
         ProfessorController professorController = new ProfessorController(professorMetier);

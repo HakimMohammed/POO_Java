@@ -18,7 +18,7 @@ public class DepartmentPage implements Page{
         Header header = new Header("Departments", back);
         root.setTop(header);
 
-        scene = new Scene(root, 500, 500);
+        scene = new Scene(root, 1080, 694);
     }
 
     public void show() {

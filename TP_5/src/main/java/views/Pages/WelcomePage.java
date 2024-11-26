@@ -1,7 +1,6 @@
 package views.Pages;
 
 import javafx.scene.Scene;
-import javafx.stage.Stage;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -17,7 +16,7 @@ public class WelcomePage {
 
     private final Scene scene;
 
-    public WelcomePage(Stage stage) {
+    public WelcomePage() {
         BorderPane root = new BorderPane();
 
         VBox main = new VBox(30);
@@ -37,7 +36,7 @@ public class WelcomePage {
         main.setAlignment(Pos.CENTER);
         root.setCenter(main);
 
-        scene = new Scene(root, 500, 500);
+        scene = new Scene(root, 1080, 694);
     }
 
     public void setNavigation(ProfessorPage professorPage, DepartmentPage departmentPage) {

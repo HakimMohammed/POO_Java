@@ -9,6 +9,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import models.Professor;
+import views.components.ActionCell;
 import views.components.BackButton;
 import views.components.Header;
 
@@ -49,13 +50,18 @@ public class ProfessorPage implements Page{
         TableColumn<Professor, Integer> dateColumn = new TableColumn<>("Date de Recrutement");
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("dateRecruitment"));
 
-        tableView.getColumns().addAll(idColumn, nomColumn, prenomColumn, cinColumn, addresseColumn, telColumn, emailColumn, dateColumn);
+        // action
+        TableColumn<Professor, Integer> actionColumn = new TableColumn<>("Actions");
+        actionColumn.setCellFactory(col -> new ActionCell<Professor>());
+
+
+        tableView.getColumns().addAll(idColumn, nomColumn, prenomColumn, cinColumn, addresseColumn, telColumn, emailColumn, dateColumn, actionColumn);
         tableView.setItems(controller.fetchAll());
 
         root.setCenter(tableView);
         // End Table View
 
-        scene = new Scene(root, 500, 500);
+        scene = new Scene(root, 1080, 694);
     }
 
     public void show() {
