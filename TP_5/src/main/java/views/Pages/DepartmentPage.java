@@ -2,10 +2,7 @@ package views.Pages;
 
 import controllers.DepartmentController;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -27,11 +24,31 @@ public class DepartmentPage implements Page{
 
         BorderPane root = new BorderPane();
 
-        // HEADER
+        // Header
         Button back = BackButton.create(stage, welcomePage);
-        Header header = new Header("Departments", back);
+
+        // ACTIONS
+        HBox actions = new HBox(10);
+        // SEARCH
+        HBox search = new HBox(2);
+        TextField searchField = new TextField();
+        Button searchButton = new Button("Search");
+        search.getChildren().addAll(searchField ,searchButton);
+        // END SEARCH
+
+        // CREATE
+        Button create = new Button("New Department");
+        create.setStyle("-fx-background-color: green; -fx-text-fill: white;");
+        // END CREATE
+        actions.getChildren().addAll(create, search);
+        actions.setStyle("-fx-padding: 20 0 0 0");
+
+        // END ACTIONS
+
+        Header header = new Header(back, "Departments", actions);
+
         root.setTop(header);
-        // END HEADER
+        // End Header
 
         // TABLE VIEW
         TableView<Departement> tableView = new TableView<>();

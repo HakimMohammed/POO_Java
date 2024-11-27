@@ -2,10 +2,7 @@ package views.Pages;
 
 import controllers.ProfessorController;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -29,7 +26,26 @@ public class ProfessorPage implements Page{
 
         // Header
         Button back = BackButton.create(stage, welcomePage);
-        Header header = new Header("Professors", back);
+
+        // ACTIONS
+        HBox actions = new HBox(10);
+        // SEARCH
+        HBox search = new HBox(2);
+        TextField searchField = new TextField();
+        Button searchButton = new Button("Search");
+        search.getChildren().addAll(searchField ,searchButton);
+        // END SEARCH
+
+        // CREATE
+        Button create = new Button("New Professor");
+        create.setStyle("-fx-background-color: green; -fx-text-fill: white;");
+        // END CREATE
+        actions.getChildren().addAll(create, search);
+        actions.setStyle("-fx-padding: 20 0 0 0");
+        // END ACTIONS
+
+        Header header = new Header(back, "Professors", actions);
+
         root.setTop(header);
         // End Header
 
