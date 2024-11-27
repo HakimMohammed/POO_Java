@@ -3,13 +3,14 @@ package views.Pages;
 import controllers.ProfessorController;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import models.Professor;
-import views.components.ActionCell;
 import views.components.BackButton;
 import views.components.Header;
 
@@ -52,7 +53,72 @@ public class ProfessorPage implements Page{
 
         // action
         TableColumn<Professor, Integer> actionColumn = new TableColumn<>("Actions");
-        actionColumn.setCellFactory(col -> new ActionCell<Professor>());
+        actionColumn.setCellFactory(column -> new TableCell<>() {
+            private final HBox actionBox = new HBox(10);
+
+            private final Button deleteButton = new Button("Delete");
+            private final Button editButton = new Button("Edit");
+            private final Button assignButton = new Button("Assign to Dept");
+
+            {
+                // Button styles
+                deleteButton.setStyle("-fx-background-color: red; -fx-text-fill: white;");
+                editButton.setStyle("-fx-background-color: orange; -fx-text-fill: white;");
+                assignButton.setStyle("-fx-background-color: green; -fx-text-fill: white;");
+
+                // Button actions
+                deleteButton.setOnAction(e -> {
+                    Professor professor = getTableRow().getItem();
+                    if (professor != null) {
+                        handleDelete(professor);
+                    }
+                });
+
+                editButton.setOnAction(e -> {
+                    Professor professor = getTableRow().getItem();
+                    if (professor != null) {
+                        handleEdit(professor);
+                    }
+                });
+
+                assignButton.setOnAction(e -> {
+                    Professor professor = getTableRow().getItem();
+                    if (professor != null) {
+                        handleAssign(professor);
+                    }
+                });
+
+                // Add buttons to the HBox
+                actionBox.getChildren().addAll(editButton, deleteButton, assignButton);
+            }
+
+            @Override
+            protected void updateItem(Integer item, boolean empty) {
+                super.updateItem(item, empty);
+
+                if (empty || getTableRow() == null || getTableRow().getItem() == null) {
+                    setGraphic(null); // Clear the cell if there's no data
+                } else {
+                    setGraphic(actionBox); // Set the HBox with buttons
+                }
+            }
+
+            private void handleDelete(Professor professor) {
+                System.out.println("Deleting professor: " + professor.getNom());
+                // Implement your delete logic here
+            }
+
+            private void handleEdit(Professor professor) {
+                System.out.println("Editing professor: " + professor.getNom());
+                // Implement your edit logic here
+            }
+
+            private void handleAssign(Professor professor) {
+                System.out.println("Assigning professor: " + professor.getNom());
+                // Implement your assign-to-department logic here
+            }
+        });
+        // end action
 
 
         tableView.getColumns().addAll(idColumn, nomColumn, prenomColumn, cinColumn, addresseColumn, telColumn, emailColumn, dateColumn, actionColumn);

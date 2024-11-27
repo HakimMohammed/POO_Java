@@ -1,8 +1,10 @@
 package views;
 
+import controllers.DepartmentController;
 import controllers.ProfessorController;
 import javafx.application.Application;
 import javafx.stage.Stage;
+import metier.DepartmentMetierImpl;
 import metier.ProfessorMetierImpl;
 import views.Pages.DepartmentPage;
 import views.Pages.ProfessorPage;
@@ -23,7 +25,9 @@ public class App extends Application {
         ProfessorMetierImpl professorMetier = new ProfessorMetierImpl();
         ProfessorController professorController = new ProfessorController(professorMetier);
         ProfessorPage professorPage = new ProfessorPage(primaryStage, welcomePage, professorController);
-        DepartmentPage departmentPage = new DepartmentPage(primaryStage, welcomePage);
+        DepartmentMetierImpl departmentMetier = new DepartmentMetierImpl();
+        DepartmentController departmentController = new DepartmentController(departmentMetier);
+        DepartmentPage departmentPage = new DepartmentPage(primaryStage, welcomePage, departmentController);
 
         // Navigation
         welcomePage.setNavigation(professorPage, departmentPage);
