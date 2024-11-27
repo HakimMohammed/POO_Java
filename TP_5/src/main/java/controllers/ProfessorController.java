@@ -15,4 +15,12 @@ public class ProfessorController {
     public ObservableList<Professor> fetchAll() {
         return FXCollections.observableArrayList(metier.getAllProfessors());
     }
+
+    public void delete(int id) {
+        metier.deleteProfessor(id);
+    }
+
+    public void edit(int id, Professor professor) {
+        metier.updateProfessor(id, professor);
+    }
 }

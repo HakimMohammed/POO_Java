@@ -13,6 +13,8 @@ import javafx.stage.Stage;
 import models.Professor;
 import views.components.BackButton;
 import views.components.Header;
+import views.dialogs.Delete;
+import views.dialogs.ProfessorEdit;
 
 public class ProfessorPage implements Page{
     private final Scene scene;
@@ -77,7 +79,7 @@ public class ProfessorPage implements Page{
                 editButton.setOnAction(e -> {
                     Professor professor = getTableRow().getItem();
                     if (professor != null) {
-                        handleEdit(professor);
+                        handleEdit(professor, controller);
                     }
                 });
 
@@ -104,12 +106,18 @@ public class ProfessorPage implements Page{
             }
 
             private void handleDelete(Professor professor) {
-                System.out.println("Deleting professor: " + professor.getNom());
-                // Implement your delete logic here
+                boolean confirmed = Delete.show(professor.getPrenom()+ " "+professor.getNom());
+                if(confirmed) {
+                    System.out.println("Deleting professor: " + professor.getNom());
+                    // Call Controller
+                    // professorController.delete(professor.getId());
+                }
             }
 
-            private void handleEdit(Professor professor) {
-                System.out.println("Editing professor: " + professor.getNom());
+            private void handleEdit(Professor professor, ProfessorController controller) {
+                ProfessorEdit.show(professor,controller, () -> {
+                    System.out.println("Editing professor: " + professor.getNom());
+                });
                 // Implement your edit logic here
             }
 

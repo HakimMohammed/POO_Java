@@ -15,4 +15,8 @@ public class DepartmentController {
     public ObservableList<Departement> fetchAll() {
         return FXCollections.observableArrayList(metier.getAllDepartments());
     }
+
+    public void delete(int id){
+        metier.deleteDepartment(id);
+    }
 }

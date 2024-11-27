@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 import models.Departement;
 import views.components.BackButton;
 import views.components.Header;
+import views.dialogs.Delete;
 
 public class DepartmentPage implements Page{
     private final Scene scene;
@@ -83,8 +84,12 @@ public class DepartmentPage implements Page{
             }
 
             private void handleDelete(Departement departement) {
-                System.out.println("Deleting department: " + departement.getNom());
-                // Implement your delete logic here
+                boolean confirmed = Delete.show(departement.getNom());
+                if (confirmed){
+                    System.out.println("Deleting Department . . .");
+                    // Call the controller
+                    // departmentController.delete(departement.getId());
+                }
             }
 
             private void handleEdit(Departement departement) {
