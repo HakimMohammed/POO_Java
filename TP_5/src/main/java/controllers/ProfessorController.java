@@ -31,4 +31,8 @@ public class ProfessorController {
     public ObservableList<Professor> search(String keyword) {
         return FXCollections.observableArrayList(metier.getProfessorsByKeyWord(keyword));
     }
+
+    public void assignToDepartment(int id_professor, int id_department) {
+        metier.assignProfessorToDep(id_professor, id_department);
+    }
 }

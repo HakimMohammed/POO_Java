@@ -13,6 +13,7 @@ import views.components.Header;
 import views.dialogs.Delete;
 import views.dialogs.Edit.ProfessorCreate;
 import views.dialogs.Edit.ProfessorEdit;
+import views.dialogs.Select;
 
 public class ProfessorPage implements Page{
     private final Scene scene;
@@ -143,8 +144,7 @@ public class ProfessorPage implements Page{
             }
 
             private void handleAssign(Professor professor) {
-                System.out.println("Assigning professor: " + professor.getNom());
-                // Implement your assign-to-department logic here
+                Select.show(professor.getId(), controller);
             }
 
             private void handleCreate() {

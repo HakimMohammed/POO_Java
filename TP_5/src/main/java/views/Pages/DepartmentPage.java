@@ -13,6 +13,7 @@ import views.components.Header;
 import views.dialogs.Delete;
 import views.dialogs.Edit.DepartmentCreate;
 import views.dialogs.Edit.DepartmentEdit;
+import views.dialogs.List;
 
 public class DepartmentPage implements Page{
     private final Scene scene;
@@ -66,6 +67,7 @@ public class DepartmentPage implements Page{
 
             private final Button deleteButton = new Button("Delete");
             private final Button editButton = new Button("Edit");
+            private final Button listButton = new Button("List Professors");
 
             {
                 createButton.setOnAction(e -> {
@@ -75,6 +77,7 @@ public class DepartmentPage implements Page{
                 // Button styles
                 deleteButton.setStyle("-fx-background-color: red; -fx-text-fill: white;");
                 editButton.setStyle("-fx-background-color: orange; -fx-text-fill: white;");
+                listButton.setStyle("-fx-background-color: green; -fx-text-fill: white;");
 
                 // Button actions
                 deleteButton.setOnAction(e -> {
@@ -91,8 +94,13 @@ public class DepartmentPage implements Page{
                     }
                 });
 
+                listButton.setOnAction(e -> {
+                    Departement departement = getTableRow().getItem();
+                    handleList(departement);
+                });
+
                 // Add buttons to the HBox
-                actionBox.getChildren().addAll(editButton, deleteButton);
+                actionBox.getChildren().addAll(editButton, deleteButton, listButton);
             }
 
 
@@ -125,6 +133,10 @@ public class DepartmentPage implements Page{
 
             private void handleCreate() {
                 DepartmentCreate.show(controller, this::refresh);
+            }
+
+            private void handleList(Departement departement) {
+                List.show(departement);
             }
 
             // Refresh Data after making changes
