@@ -14,6 +14,7 @@ import models.Departement;
 import views.components.BackButton;
 import views.components.Header;
 import views.dialogs.Delete;
+import views.dialogs.DepartmentEdit;
 
 public class DepartmentPage implements Page{
     private final Scene scene;
@@ -88,13 +89,21 @@ public class DepartmentPage implements Page{
                 if (confirmed){
                     System.out.println("Deleting Department . . .");
                     // Call the controller
-                    // departmentController.delete(departement.getId());
+                    departmentController.delete(departement.getId());
+                    this.refresh();
                 }
             }
 
             private void handleEdit(Departement departement) {
+                DepartmentEdit.show(departement, controller, this::refresh);
                 System.out.println("Editing department: " + departement.getNom());
                 // Implement your edit logic here
+            }
+
+            // Refresh Data after making changes
+            private void refresh(){
+                tableView.setItems(controller.fetchAll());
+                tableView.refresh();
             }
         });
         // END ACTION BUTTONS

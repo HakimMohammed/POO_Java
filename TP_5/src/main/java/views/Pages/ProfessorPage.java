@@ -108,22 +108,24 @@ public class ProfessorPage implements Page{
             private void handleDelete(Professor professor) {
                 boolean confirmed = Delete.show(professor.getPrenom()+ " "+professor.getNom());
                 if(confirmed) {
-                    System.out.println("Deleting professor: " + professor.getNom());
-                    // Call Controller
-                    // professorController.delete(professor.getId());
+                    professorController.delete(professor.getId());
+                    this.refresh();
                 }
             }
 
             private void handleEdit(Professor professor, ProfessorController controller) {
-                ProfessorEdit.show(professor,controller, () -> {
-                    System.out.println("Editing professor: " + professor.getNom());
-                });
-                // Implement your edit logic here
+                ProfessorEdit.show(professor,controller, this::refresh);
             }
 
             private void handleAssign(Professor professor) {
                 System.out.println("Assigning professor: " + professor.getNom());
                 // Implement your assign-to-department logic here
+            }
+
+            // Refresh Data after making changes
+            private void refresh(){
+                tableView.setItems(controller.fetchAll());
+                tableView.refresh();
             }
         });
         // end action

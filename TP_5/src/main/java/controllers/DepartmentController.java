@@ -19,4 +19,8 @@ public class DepartmentController {
     public void delete(int id){
         metier.deleteDepartment(id);
     }
+
+    public void edit(int id, Departement departement){
+        metier.editDepartment(id, departement);
+    }
 }
