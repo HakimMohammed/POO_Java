@@ -11,7 +11,8 @@ import models.Departement;
 import views.components.BackButton;
 import views.components.Header;
 import views.dialogs.Delete;
-import views.dialogs.DepartmentEdit;
+import views.dialogs.Edit.DepartmentCreate;
+import views.dialogs.Edit.DepartmentEdit;
 
 public class DepartmentPage implements Page{
     private final Scene scene;
@@ -37,10 +38,10 @@ public class DepartmentPage implements Page{
         // END SEARCH
 
         // CREATE
-        Button create = new Button("New Department");
-        create.setStyle("-fx-background-color: green; -fx-text-fill: white;");
+        Button createButton = new Button("New Department");
+        createButton.setStyle("-fx-background-color: green; -fx-text-fill: white;");
         // END CREATE
-        actions.getChildren().addAll(create, search);
+        actions.getChildren().addAll(createButton, search);
         actions.setStyle("-fx-padding: 20 0 0 0");
 
         // END ACTIONS
@@ -67,6 +68,10 @@ public class DepartmentPage implements Page{
             private final Button editButton = new Button("Edit");
 
             {
+                createButton.setOnAction(e -> {
+                    handleCreate();
+                });
+
                 // Button styles
                 deleteButton.setStyle("-fx-background-color: red; -fx-text-fill: white;");
                 editButton.setStyle("-fx-background-color: orange; -fx-text-fill: white;");
@@ -89,6 +94,7 @@ public class DepartmentPage implements Page{
                 // Add buttons to the HBox
                 actionBox.getChildren().addAll(editButton, deleteButton);
             }
+
 
             @Override
             protected void updateItem(Integer item, boolean empty) {
@@ -115,6 +121,10 @@ public class DepartmentPage implements Page{
                 DepartmentEdit.show(departement, controller, this::refresh);
                 System.out.println("Editing department: " + departement.getNom());
                 // Implement your edit logic here
+            }
+
+            private void handleCreate() {
+                DepartmentCreate.show(controller, this::refresh);
             }
 
             // Refresh Data after making changes

@@ -1,4 +1,4 @@
-package views.dialogs;
+package views.dialogs.Edit;
 
 import controllers.ProfessorController;
 import javafx.geometry.Insets;

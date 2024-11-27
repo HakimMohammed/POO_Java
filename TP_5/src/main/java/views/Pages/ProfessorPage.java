@@ -11,7 +11,8 @@ import models.Professor;
 import views.components.BackButton;
 import views.components.Header;
 import views.dialogs.Delete;
-import views.dialogs.ProfessorEdit;
+import views.dialogs.Edit.ProfessorCreate;
+import views.dialogs.Edit.ProfessorEdit;
 
 public class ProfessorPage implements Page{
     private final Scene scene;
@@ -37,10 +38,10 @@ public class ProfessorPage implements Page{
         // END SEARCH
 
         // CREATE
-        Button create = new Button("New Professor");
-        create.setStyle("-fx-background-color: green; -fx-text-fill: white;");
+        Button createButton = new Button("New Professor");
+        createButton.setStyle("-fx-background-color: green; -fx-text-fill: white;");
         // END CREATE
-        actions.getChildren().addAll(create, search);
+        actions.getChildren().addAll(createButton, search);
         actions.setStyle("-fx-padding: 20 0 0 0");
         // END ACTIONS
 
@@ -79,6 +80,14 @@ public class ProfessorPage implements Page{
             private final Button assignButton = new Button("Assign to Dept");
 
             {
+                createButton.setOnAction(e -> {
+                    handleCreate();
+                });
+
+                searchButton.setOnAction(e -> {
+                    handleSearch();
+                });
+
                 // Button styles
                 deleteButton.setStyle("-fx-background-color: red; -fx-text-fill: white;");
                 editButton.setStyle("-fx-background-color: orange; -fx-text-fill: white;");
@@ -138,11 +147,25 @@ public class ProfessorPage implements Page{
                 // Implement your assign-to-department logic here
             }
 
+            private void handleCreate() {
+                ProfessorCreate.show(controller, this::refresh);
+            }
+
+            private void handleSearch() {
+                String keyword = searchField.getText();
+                if(!keyword.isEmpty()){
+                    tableView.setItems(controller.search(keyword));
+                } else {
+                    this.refresh();
+                }
+            }
+
             // Refresh Data after making changes
             private void refresh(){
                 tableView.setItems(controller.fetchAll());
                 tableView.refresh();
             }
+
         });
         // end action
 
