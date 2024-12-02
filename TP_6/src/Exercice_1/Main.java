@@ -21,14 +21,13 @@ public class Main {
     }
 
     public static void customLS(File directory) {
-        System.out.println("-----------------------------------------------------");
-        System.out.println("-------------------- CUSTOM LS ----------------------");
-        System.out.println("-----------------------------------------------------");
-
         File[] files = directory.listFiles();
         assert files != null;
         for(File file: files) {
             decorate(file);
+            if ( file.isDirectory()) {
+                customLS(file);
+            }
         }
     }
 
