@@ -1,0 +1,4 @@
+6. Que constatez-vous ?
+
+Although we created 10 threads , and each of them take different parameters.
+The only one executed is the last one

@@ -1,7 +1,6 @@
 package Exercice_3.metier;
 
 import Exercice_3.models.Client;
-import Exercice_3.models.Produit;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -33,8 +32,8 @@ public class MetierClientImpl implements IMetier<Client> {
     @Override
     public Client findByNom(String nom) {
         for(Client client: clients) {
-            if(clients.getNom().contains(nom)) {
-                return clients;
+            if(client.getNom().contains(nom)) {
+                return client;
             }
         }
         return null;
